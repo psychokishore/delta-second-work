@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+  <meta content="utf-8" http-equiv="encoding">
+
+</head>
+<body>
+
+<button onclick="move()"><canvas id="myCanvas" width="400" height="700" style="border:1px solid #d3d3d3;"></canvas></button>
+
+<audio  loop autoplay >
+  <source src="mu.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<script>
+  var high=[];
+ high=JSON.parse( localStorage.getItem("high"));
+var num =  localStorage.getItem('"high"'); 
+var ext = localStorage.getItem("user");
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+var ct = c.getContext("2d");
+var h = 580;
+var w = 200;
+var v = 400;
+var v1 = 100;
+var j1=v1+90;
+var k1=v1;
+var v2 = -200;
+var j2=v2+90;
+var k2=v2;
+var k=v;
+var j= v+90;
+var score=0;
+var c1 = "red";
+var c2 = "green";
+var cb = "green";
+var game =setInterval(fps, 10);
+function fps(argument) {
+ ctx.clearRect(0, 0, 400, 700);
+ ctx.beginPath();
+ ctx.strokeStyle = cb;
+ ctx.lineWidth = 10;
+ ctx.arc(w, h, 4, 0, 2 * Math.PI);
+ ctx.stroke();
+ 
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.lineWidth = 10;
+ ctx.arc(w,v,50,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.arc(w,v,50, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.lineWidth = 10;
+ ctx.arc(w,j,5,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.arc(w,j,5, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = "black";
+ ctx.arc(w,k,5, 0,2* Math.PI);
+ ctx.stroke();
+
+ if(h-k<12&&h-k>-1){
+   k=k+1000;
+   score=score+1;
+ }
+  if(h-j<12&&h-j>-12) {
+      if(cb=="green"){
+        cb="red";
+      }
+      else{
+        cb="green";
+      }
+      j=j+1000;
+  }
+  if(h>699&&h>710)
+  {
+    location.reload();
+    alert("game over");
+    window.open("login.html");
+     if(score>num){
+      
+  }
+  }
+   if(v-h<62&&v-h>32){
+    if (cb!=c2){
+      alert("game over");
+      window.open("login.html");
+      location.reload();
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify(high));	
+    } 
+     }
+   }
+     if(h-v<62&&h-v>32){
+    if (cb!=c1){
+      location.reload();
+      alert("game over");
+      window.open("login.html");
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify(high));	
+     }
+     }
+   }
+
+
+
+ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.lineWidth = 10;
+ ctx.arc(w,v1,50,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.arc(w,v1,50, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.lineWidth = 10;
+ ctx.arc(w,j1,5,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.arc(w,j1,5, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = "black";
+ ctx.arc(w,k1,5, 0,2* Math.PI);
+ ctx.stroke();
+
+ if(h-k1<12&&h-k2>-1){
+   k1=k1+1000;
+   score=score+1;
+ }
+  if(h-j1<12&&h-j1>-12) {
+      if(cb=="green"){
+        cb="red";
+      }
+      else{
+        cb="green";
+      }
+      j1=j1+1000;
+  }
+
+   if(v1-h<62&&v1-h>32){
+    if (cb!=c1){
+      alert("game over");
+      location.reload();
+      window.open("login.html");
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify(high));	
+     }
+     }
+   }
+     if(h-v1<62&&h-v1>32){
+    if (cb!=c2){
+      alert("game over");
+      location.reload();
+      window.open("login.html");
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify(high));	
+     }
+     }
+   }
+
+  
+  
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.lineWidth = 10;
+ ctx.arc(w,v2,50,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.arc(w,v2,50, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c1;
+ ctx.lineWidth = 10;
+ ctx.arc(w,j2,5,0, Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = c2;
+ ctx.arc(w,j2,5, Math.PI,2* Math.PI);
+ ctx.stroke();
+ ctx.beginPath();
+ ctx.strokeStyle = "black";
+ ctx.arc(w,k2,5, 0,2* Math.PI);
+ ctx.stroke();
+
+ if(h-k2<12&&h-k2>-1){
+   k2=k2+1000;
+   score=score+1;
+ }
+  if(h-j2<12&&h-j2>-12) {
+      if(cb=="green"){
+        cb="red";
+      }
+      else{
+        cb="green";
+      }
+      j2=j2+1000;
+  }
+
+   if(v2-h<62&&v2-h>32){
+    if (cb!=c2){
+      alert("game over");
+      location.reload();
+      window.open("login.html");
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify(high));	
+     }
+     }
+   }
+     if(h-v2<62&&h-v2>32){
+    if (cb!=c1){
+      alert("game over");
+      location.reload();
+      window.open("login.html");
+     if(score>num){
+      high=[ext,score];
+      localStorage.setItem("high",JSON.stringify( high));	
+     }
+     }
+   }
+  
+}
+
+
+setInterval(down, 700);
+  function down(argument) {
+   h=h+10;
+ }
+setInterval(color, 2000);
+function color(argument) {
+var temp = c1;
+c1=c2;
+c2=temp
+}
+
+
+function move(argument) {
+   h=h-20;
+   if (h<340){
+   h=h+200;
+   v=v+200;
+   v1=v1+200;
+   v2=v2+200; 
+    j1=j1+200;
+    k1=k1+200;
+    j2=j2+200;
+    k2=k2+200;
+    j=j+200;
+   k=k+200;
+  }
+   if(v>700){
+    v=-200;
+     j=v+90;
+     k=v;
+  }
+  if(v1>700){
+    v1=-200;
+     j1=v1+90;
+     k1=v1;
+  }
+  if(v2>700){
+    v2=-200;
+     j2=v2+90;
+     k2=v2;
+  }
+}
+
+</script> 
+</body>
+</html>
+
+
+
+
